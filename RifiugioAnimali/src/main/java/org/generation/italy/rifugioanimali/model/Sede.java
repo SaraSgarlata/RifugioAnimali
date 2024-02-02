@@ -1,9 +1,6 @@
 package org.generation.italy.rifugioanimali.model;
 
 import java.util.List;
-
-import org.hibernate.annotations.GenericGenerator;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,10 +12,9 @@ import jakarta.persistence.OneToMany;
 public class Sede {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	private String identificativo;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int identificativo;
+		
 	@Column(nullable = false, length = 20)
 	private String indirizzo;
 	
@@ -36,19 +32,18 @@ public class Sede {
 		
 	}
 
-	public Sede(String identificativo, String indirizzo, String direttore, String nomeRifugio) {
+	public Sede(String indirizzo, String direttore, String nomeRifugio) {
 		super();
-		this.identificativo = identificativo;
 		this.indirizzo = indirizzo;
 		this.direttore = direttore;
 		this.nomeRifugio = nomeRifugio;
 	}
 
-	public String getIdentificativo() {
+	public int getIdentificativo() {
 		return identificativo;
 	}
 
-	public void setIdentificativo(String identificativo) {
+	public void setIdentificativo(int identificativo) {
 		this.identificativo = identificativo;
 	}
 

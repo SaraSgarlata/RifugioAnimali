@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -18,6 +19,7 @@ public class AnimalettoController {
 	AnimalettoRepository animalettoRepository;
 	
 	@GetMapping("/elenco")
+	@ResponseBody
 	public String elencoAnimaletti () {
 		List<Animaletto> elencoAnimaletti = animalettoRepository.findAll();
 		StringBuilder elenco = new StringBuilder();

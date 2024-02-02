@@ -12,7 +12,7 @@ public class Animaletto {
 	
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		int id;
+		private int id;
 		
 		@Column(nullable = false, length=20)
 		private String specie;
@@ -32,7 +32,7 @@ public class Animaletto {
 		@Column(nullable = false)
 		private boolean adottato;
 
-		@ManyToOne //più animaletti stanno in una sola sede
+		@ManyToOne(optional=false) //più animaletti stanno in una sola sede
 		private Sede sede;
 		
 		@ManyToOne // più animaletti possono essere adottrati da un singolo utente
@@ -43,10 +43,9 @@ public class Animaletto {
 			
 		}
 
-		public Animaletto(int id, String specie, String razza, int eta, boolean storicoVaccinale, boolean chip,
+		public Animaletto(String specie, String razza, int eta, boolean storicoVaccinale, boolean chip,
 				boolean adottato) {
 			super();
-			this.id = id;
 			this.specie = specie;
 			this.razza = razza;
 			this.eta = eta;
